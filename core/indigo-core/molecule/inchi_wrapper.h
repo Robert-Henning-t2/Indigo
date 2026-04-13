@@ -83,6 +83,7 @@ namespace indigo
     private:
         void _validate(BaseMolecule& bmol);
         Array<char> options;
+        Array<char> sanitizedForcedOptions;
         int _stereo_opt;
     };
 

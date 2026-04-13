@@ -619,10 +619,9 @@ void InchiWrapper::generateInchiInput(Molecule& input_mol, inchi_Input& input, A
     input.num_stereo0D = stereo.size();
     if (forcedOptions)
     {
-        indigo::Array<char> sanitizedOptions;
-        sanitizedOptions.readString(forcedOptions, true);
-        SanitizeOptions(sanitizedOptions);
-        input.szOptions = sanitizedOptions.ptr();
+        sanitizedForcedOptions.readString(forcedOptions, true);
+        SanitizeOptions(sanitizedForcedOptions);
+        input.szOptions = sanitizedForcedOptions.ptr();
         return;
     }
     input.szOptions = options.ptr();

@@ -26,9 +26,9 @@ namespace com.epam.indigo
         public void TestInchiCalculation_ForceParameter(string parameter)
         {
             using var indigo = new Indigo();
-
             var indigoObject = indigo.loadMolecule("C1=CC=CC=C1");
-            IndigoInchi indigoInchi = new IndigoInchi(indigo);
+
+            using IndigoInchi indigoInchi = new IndigoInchi(indigo);
             string inchi = indigoInchi.getInchi(indigoObject, parameter);
             Assert.AreEqual("InChI=1S/C6H6/c1-2-4-6-5-3-1/h1-6H", inchi);
         }
@@ -71,9 +71,9 @@ M  END
         public void TestInchiCalculation_OrEnantiomer()
         {
             using var indigo = new Indigo();
-
             var indigoObject = indigo.loadMolecule(orEnantiomer);
-            IndigoInchi indigoInchi = new IndigoInchi(indigo);
+
+            using IndigoInchi indigoInchi = new IndigoInchi(indigo);
             string inchi = indigoInchi.getInchi(indigoObject, "/SRel");
             Assert.AreEqual("InChI=1/C6H13NO/c7-5-3-1-2-4-6(5)8/h5-6,8H,1-4,7H2/t5-,6+/s2", inchi);
         }

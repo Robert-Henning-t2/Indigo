@@ -66,18 +66,19 @@ class IndigoInchi(object):
 
         return IndigoLib.checkResultString(self._lib().indigoInchiVersion())
 
-    def getInchi(self, molecule: IndigoObject) -> str:
-        """Returns InChi string for Indigo molecule
+    def getInchi(self, molecule: IndigoObject, forceOptions: str = None) -> str:
+        """Returns InChi string for Indigo molecule with overwritten options
 
         Args:
             molecule (IndigoObject): molecule object
+            forcedOptions (str): options to pass
 
         Returns:
             str: InChi string
         """
 
         return IndigoLib.checkResultString(
-            self._lib().indigoInchiGetInchi(molecule.id)
+            self._lib().indigoInchiGetInchi(molecule.id, forceOptions)
         )
 
     def getInchiKey(self, inchi: str) -> str:

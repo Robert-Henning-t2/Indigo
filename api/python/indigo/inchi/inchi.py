@@ -76,9 +76,8 @@ class IndigoInchi(object):
         Returns:
             str: InChi string
         """
-
         return IndigoLib.checkResultString(
-            self._lib().indigoInchiGetInchi(molecule.id, forceOptions)
+            self._lib().indigoInchiGetInchi(molecule.id, None if (forceOptions is None) else forceOptions.encode())
         )
 
     def getInchiKey(self, inchi: str) -> str:

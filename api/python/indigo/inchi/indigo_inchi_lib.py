@@ -39,7 +39,7 @@ class IndigoInchiLib:
         IndigoInchiLib.lib.indigoInchiLoadMolecule.restype = c_int
         IndigoInchiLib.lib.indigoInchiLoadMolecule.argtypes = [c_char_p]
         IndigoInchiLib.lib.indigoInchiGetInchi.restype = c_char_p
-        IndigoInchiLib.lib.indigoInchiGetInchi.argtypes = [c_int]
+        IndigoInchiLib.lib.indigoInchiGetInchi.argtypes = [c_int, c_char_p]
         IndigoInchiLib.lib.indigoInchiGetInchiKey.restype = c_char_p
         IndigoInchiLib.lib.indigoInchiGetInchiKey.argtypes = [c_char_p]
         IndigoInchiLib.lib.indigoInchiGetWarning.restype = c_char_p

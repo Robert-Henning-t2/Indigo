@@ -22,6 +22,7 @@ namespace com.epam.indigo
         [DataRow(null)]
         [DataRow("")]
         [DataRow("/WarnOnEmptyStructure")]
+        [DataRow("-WarnOnEmptyStructure")]
         [TestMethod]
         public void TestInchiCalculation_ForceParameter(string parameter)
         {

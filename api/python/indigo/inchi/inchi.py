@@ -67,7 +67,7 @@ class IndigoInchi(object):
         return IndigoLib.checkResultString(self._lib().indigoInchiVersion())
 
     def getInchi(
-        self, molecule: IndigoObject, forceOptions: str = None
+        self, molecule: IndigoObject, forceOptions: str | None = None
     ) -> str:
         """Returns InChi string for Indigo molecule with overwritten options
 

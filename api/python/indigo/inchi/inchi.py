@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 from ctypes import CDLL
+from typing import Optional
 
 from ..indigo.indigo import Indigo
 from ..indigo.indigo_lib import IndigoLib
@@ -67,7 +68,7 @@ class IndigoInchi(object):
         return IndigoLib.checkResultString(self._lib().indigoInchiVersion())
 
     def getInchi(
-        self, molecule: IndigoObject, forceOptions: str | None = None
+        self, molecule: IndigoObject, forceOptions: Optional[str] = None
     ) -> str:
         """Returns InChi string for Indigo molecule with overwritten options
 

@@ -152,7 +152,7 @@ CEXPORT int indigoInchiLoadMolecule(const char* inchi_string)
     INDIGO_END(-1);
 }
 
-CEXPORT const char* indigoInchiGetInchi(int molecule, const char* forcedOptions)
+CEXPORT const char* indigoInchiGetInchi(int molecule, const char* forcedOptions = nullptr)
 {
     INDIGO_BEGIN
     {

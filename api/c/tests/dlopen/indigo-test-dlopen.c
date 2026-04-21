@@ -68,7 +68,8 @@ int main(int argc, char** argv)
     INT_RET_STR_STR indigoSetOption;
     INT_RET indigoWriteBuffer;
     INT_RET_INT_INT indigoRender;
-    STR_RET_INT_STR indigoInchiGetInchi;
+    STR_RET_INT indigoInchiGetInchi;
+    STR_RET_INT_STR indigoInchiGetInchiWithForcedOptions;
     INT_RET_STR_STR_STR bingoCreateDatabaseFile;
     INT_RET_INT bingoCloseDatabase;
     STR_RET_VOID bingoVersion;
@@ -162,6 +163,7 @@ int main(int argc, char** argv)
         indigoSetSessionId = (VOID_RET_QWORD)DLSYM(indigoHandle, "indigoSetSessionId");
         indigoLoadMoleculeFromString = (INT_RET_STR)DLSYM(indigoHandle, "indigoLoadMoleculeFromString");
         indigoInchiGetInchi = (STR_RET_INT_STR)DLSYM(indigoInChIHandle, "indigoInchiGetInchi");
+        indigoInchiGetInchiWithForcedOptions = (STR_RET_INT_STR)DLSYM(indigoInChIHandle, "indigoInchiGetInchiWithForcedOptions");
         indigoInchiInit = (INT_RET_INT)DLSYM(indigoInChIHandle, "indigoInchiInit");
         indigoInchiDispose = (INT_RET_INT)DLSYM(indigoInChIHandle, "indigoInchiDispose");
         indigoReleaseSessionId = (VOID_RET_QWORD)DLSYM(indigoHandle, "indigoReleaseSessionId");
@@ -171,7 +173,8 @@ int main(int argc, char** argv)
         indigoInchiInit(session);
         printf("Indigo session: %llu\n", session);
         m = indigoLoadMoleculeFromString("C");
-        printf("indigoInChI InChI: %s\n", indigoInchiGetInchi(m, 0));
+        printf("indigoInChI InChI: %s\n", indigoInchiGetInchi(m));
+        printf("indigoInChI (forced options) InChI: %s\n", indigoInchiGetInchiWithForcedOptions(m, 0));
         indigoInchiDispose(session);
         indigoReleaseSessionId(session);
     }

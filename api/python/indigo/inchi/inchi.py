@@ -80,7 +80,7 @@ class IndigoInchi(object):
             str: InChi string
         """
         return IndigoLib.checkResultString(
-            self._lib().indigoInchiGetInchi(
+            self._lib().indigoInchiGetInchiWithForcedOptions(
                 molecule.id,
                 None if (forceOptions is None) else forceOptions.encode(),
             )

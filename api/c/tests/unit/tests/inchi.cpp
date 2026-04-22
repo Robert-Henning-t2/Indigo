@@ -105,21 +105,21 @@ TEST_F(IndigoApiInchiTest, without_options)
 TEST_F(IndigoApiInchiTest, without_options_nullptr)
 {
     int m = indigoLoadMoleculeFromString("c1ccccc1");
-    const char* inchi = indigoInchiGetInchi(m, nullptr);
+    const char* inchi = indigoInchiGetInchiWithForcedOptions(m, nullptr);
     ASSERT_STREQ("InChI=1S/C6H6/c1-2-4-6-5-3-1/h1-6H", inchi);
 }
 
 TEST_F(IndigoApiInchiTest, srel)
 {
     int m = indigoLoadMoleculeFromString("c1ccccc1");
-    const char* inchi = indigoInchiGetInchi(m, "/SRel");
+    const char* inchi = indigoInchiGetInchiWithForcedOptions(m, "/SRel");
     ASSERT_STREQ("InChI=1/C6H6/c1-2-4-6-5-3-1/h1-6H", inchi);
 }
 
 TEST_F(IndigoApiInchiTest, srac)
 {
     int m = indigoLoadMoleculeFromString("c1ccccc1");
-    const char* inchi = indigoInchiGetInchi(m, "/SRac");
+    const char* inchi = indigoInchiGetInchiWithForcedOptions(m, "/SRac");
     ASSERT_STREQ("InChI=1/C6H6/c1-2-4-6-5-3-1/h1-6H", inchi);
 }
 
@@ -157,7 +157,7 @@ const char* orEnantiomer = "\n"
 TEST_F(IndigoApiInchiTest, or_enantiomer_backward_compat1)
 {
     int m = indigoLoadMoleculeFromString(orEnantiomer);
-    const char* inchi = indigoInchiGetInchi(m, nullptr);
+    const char* inchi = indigoInchiGetInchiWithForcedOptions(m, nullptr);
     ASSERT_STREQ("InChI=1/C6H13NO/c7-5-3-1-2-4-6(5)8/h5-6,8H,1-4,7H2/t5-,6+/s2", inchi);
 }
 
@@ -171,33 +171,33 @@ TEST_F(IndigoApiInchiTest, or_enantiomer_backward_compat2)
 TEST_F(IndigoApiInchiTest, or_enantiomer_standard)
 {
     int m = indigoLoadMoleculeFromString(orEnantiomer);
-    const char* inchi = indigoInchiGetInchi(m, "");
+    const char* inchi = indigoInchiGetInchiWithForcedOptions(m, "");
     const char* expected = "InChI=1S/C6H13NO/c7-5-3-1-2-4-6(5)8/h5-6,8H,1-4,7H2/t5-,6+/m0/s1";
 
     ASSERT_STREQ(expected, inchi);
-    inchi = indigoInchiGetInchi(m, "/WarnOnEmptyStructure");
+    inchi = indigoInchiGetInchiWithForcedOptions(m, "/WarnOnEmptyStructure");
     ASSERT_STREQ(expected, inchi);
-    inchi = indigoInchiGetInchi(m, "-WarnOnEmptyStructure");
+    inchi = indigoInchiGetInchiWithForcedOptions(m, "-WarnOnEmptyStructure");
     ASSERT_STREQ(expected, inchi);
 }
 
 TEST_F(IndigoApiInchiTest, or_enantiomer_srel)
 {
     int m = indigoLoadMoleculeFromString(orEnantiomer);
-    const char* inchi = indigoInchiGetInchi(m, "/SRel");
+    const char* inchi = indigoInchiGetInchiWithForcedOptions(m, "/SRel");
     ASSERT_STREQ("InChI=1/C6H13NO/c7-5-3-1-2-4-6(5)8/h5-6,8H,1-4,7H2/t5-,6+/s2", inchi);
 }
 
 TEST_F(IndigoApiInchiTest, or_enantiomer_srac)
 {
     int m = indigoLoadMoleculeFromString(orEnantiomer);
-    const char* inchi = indigoInchiGetInchi(m, "/SRac");
+    const char* inchi = indigoInchiGetInchiWithForcedOptions(m, "/SRac");
     ASSERT_STREQ("InChI=1/C6H13NO/c7-5-3-1-2-4-6(5)8/h5-6,8H,1-4,7H2/t5-,6+/s3", inchi);
 }
 
 TEST_F(IndigoApiInchiTest, or_enantiomer_srac_srel)
 {
     int m = indigoLoadMoleculeFromString(orEnantiomer);
-    const char* inchi = indigoInchiGetInchi(m, "/SRac /SRel");
+    const char* inchi = indigoInchiGetInchiWithForcedOptions(m, "/SRac /SRel");
     ASSERT_STREQ("InChI=1/C6H13NO/c7-5-3-1-2-4-6(5)8/h5-6,8H,1-4,7H2/t5-,6+/s2", inchi);
 }

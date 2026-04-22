@@ -162,7 +162,7 @@ int main(int argc, char** argv)
         indigoAllocSessionId = (QWORD_RET_VOID)DLSYM(indigoHandle, "indigoAllocSessionId");
         indigoSetSessionId = (VOID_RET_QWORD)DLSYM(indigoHandle, "indigoSetSessionId");
         indigoLoadMoleculeFromString = (INT_RET_STR)DLSYM(indigoHandle, "indigoLoadMoleculeFromString");
-        indigoInchiGetInchi = (STR_RET_INT_STR)DLSYM(indigoInChIHandle, "indigoInchiGetInchi");
+        indigoInchiGetInchi = (STR_RET_INT)DLSYM(indigoInChIHandle, "indigoInchiGetInchi");
         indigoInchiGetInchiWithForcedOptions = (STR_RET_INT_STR)DLSYM(indigoInChIHandle, "indigoInchiGetInchiWithForcedOptions");
         indigoInchiInit = (INT_RET_INT)DLSYM(indigoInChIHandle, "indigoInchiInit");
         indigoInchiDispose = (INT_RET_INT)DLSYM(indigoInChIHandle, "indigoInchiDispose");
